@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
---- !u!114 &3945512576263793433
+--- !u!114 &8494499087203268655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8324ed59712e8634fbf0bcabe0217f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rainbow: {fileID: 0}
+  rainbow: {fileID: 2100000, guid: 664a6c59a55fbd64e84dab1df1a6f861, type: 2}
   colors: []
 --- !u!4 &6346989838391430190 stripped
 Transform:
