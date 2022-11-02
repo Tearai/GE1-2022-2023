@@ -4,26 +4,46 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject enemyTank;
+    public int numberofTanks;
+    private float nextSpawntime;
+    private float spawnDelay = 1;
+    public int NumberOfPrefabs;
 
-    System.Collections.IEnumerator Spawn()
-    {
-        while(true)
-        {
-            GameObject g = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            g.AddComponent<Rigidbody>();
-            g.transform.position = transform.position;
-            yield return new WaitForSeconds(.2f);
-        }
-    }
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawn());
+        //spawnTrue = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ShouldSpawn() && NumberOfPrefabs <= 4)
+        {
+            Spawn();
+        }   
+
+        NumberOfPrefabs = GameObject.FindGameObjectsWithTag("Tank").Length;
+
+    }
+
+    private void Spawn()
+    {
+        
+        nextSpawntime = Time.time + spawnDelay;
+        Instantiate(enemyTank, transform.position, transform.rotation);
         
     }
+
+    private bool ShouldSpawn()
+    {
+        return Time.time > nextSpawntime;
+    }
+
+
 }

@@ -5,11 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 5.0f;
+    // Spawner spawner;
     // Start is called before the first frame update
+    public Spawner spawn;
     void Start()
     {
         GameObject.Destroy(this.gameObject, 30);
         seed = Random.Range(1000, 2000);
+  
+
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -20,7 +24,20 @@ public class Bullet : MonoBehaviour
             GameObject.Destroy(collision.gameObject);
             Debug.Log("Explosion");
 
+
+
         }
+
+        if (collision.gameObject.tag == "Tank")
+        {
+            GameObject.Destroy(this.gameObject);
+            GameObject.Destroy(collision.gameObject);
+            Debug.Log("Explosion");
+
+
+
+        }
+
     }
 
     float seed;
@@ -41,5 +58,8 @@ public class Bullet : MonoBehaviour
         pos += (noise * Time.deltaTime);
         transform.position = pos;
         //transform.Translate(0, 0, speed * Time.deltaTime);
+
+
+        
     }
 }

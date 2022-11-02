@@ -191,6 +191,17 @@ public partial class @TankControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1e8b8423-e12c-411d-8446-a5057cce48c6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5e2517b-adad-42db-b426-c84af14e2c7f"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
