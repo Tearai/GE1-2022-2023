@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Bullet : MonoBehaviour
 {
@@ -41,5 +43,14 @@ public class Bullet : MonoBehaviour
         pos += (noise * Time.deltaTime);
         transform.position = pos;
         //transform.Translate(0, 0, speed * Time.deltaTime);
+
+        StartCoroutine(die());
+    }
+
+    IEnumerator die()
+    {
+        yield return new WaitForSeconds(2);
+
+        Destroy(gameObject);
     }
 }
