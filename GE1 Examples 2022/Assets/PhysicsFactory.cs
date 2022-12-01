@@ -5,16 +5,29 @@ public class PhysicsFactory : MonoBehaviour {
 
     public LayerMask groundLM;
     public GameObject wormPrefab;
-
-    void CreateTower(float radius, int height, int segments, Vector3 point)
+    public GameObject brick;
+    void CreateTower(float x, float y, float z, float radius, int height, int segments, Vector3 point)
     {
+        float test = (Mathf.PI * 2.0f) / segments;
+        
+        for(int i = 0; i< segments; i++)
+        {
 
+            float lol = test * i;
+            Vector3 towerPos = new Vector3();
 
+            towerPos.x = x + (Mathf.Sin(lol) * radius);
+            towerPos.y = y;
+            towerPos.z = z + (Mathf.Cos(lol) * radius);
 
+            Quaternion towQ = Quaternion.AngleAxis(-lol * Mathf.Rad2Deg, Vector3.forward);
 
+            GameObject tow = CreateBrick(towerPos.x, towerPos.y, towerPos.z);
 
-
-
+            tow.transform.rotation = towQ;
+        }
+        
+       
 
 
 
@@ -181,9 +194,9 @@ public class PhysicsFactory : MonoBehaviour {
             GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");            
             if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out rch, 100))
             {
-                Vector3 p = rch.point;
-                p.y = 0.5f;
-                CreateTower(3, 10, 12, p);
+                Vector3 pos = rch.point;
+                pos.y = 20;
+                CreateTower(pos.x, pos.y, pos.z, 10, 10, 10, pos);
             }
         }
 
