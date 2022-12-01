@@ -5,8 +5,19 @@ public class PhysicsFactory : MonoBehaviour {
 
     public LayerMask groundLM;
     public GameObject wormPrefab;
+
     void CreateTower(float radius, int height, int segments, Vector3 point)
     {
+
+
+
+
+
+
+
+
+
+
     }
 
     
@@ -175,6 +186,22 @@ public class PhysicsFactory : MonoBehaviour {
                 CreateTower(3, 10, 12, p);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            RaycastHit raycastHit;
+            GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out raycastHit))
+            {
+                if (raycastHit.collider.gameObject.tag == "groundPlane")
+                {
+                    Vector3 pos = raycastHit.point;
+                    pos.y = 10; 
+                    CreateWall(10, 10); 
+                }
+            }
+        }
+
 
         if (Input.GetKeyDown(KeyCode.I))
         {
